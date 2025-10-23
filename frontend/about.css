@@ -1,0 +1,10 @@
+:root{--glass:rgba(255,255,255,.12);--brd:rgba(255,255,255,.28)}
+*{box-sizing:border-box}html,body{height:100%;margin:0}
+body{font-family:Segoe UI,Inter,Calibri,Arial,sans-serif;background:#070a0e;color:#fff;overflow:hidden}
+.bg{position:fixed;inset:0;background:#0b0f15;z-index:0}
+#snow{position:fixed;inset:0;z-index:1;pointer-events:none}
+.card{position:fixed;left:50%;top:55%;transform:translate(-50%,-50%);z-index:2;background:var(--glass);border:1px solid var(--brd);backdrop-filter:blur(16px);border-radius:22px;padding:22px 28px;max-width:760px;width:min(760px,92%)}
+h1{margin:0 0 10px;background:linear-gradient(90deg,#9efcff,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.text{white-space:pre-wrap;line-height:1.55;margin:12px 0 16px;opacity:.95;max-height:50vh;overflow:auto}
+.btn{appearance:none;border:1px solid var(--brd);background:var(--glass);backdrop-filter:blur(12px);border-radius:14px;color:#fff;padding:10px 16px;font-weight:800;text-decoration:none}
+.btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.2)}
