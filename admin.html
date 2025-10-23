@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin — New Year CountDown</title>
+<link id="cssUi" rel="stylesheet" href="css/ui.css">
+<link id="cssStyle" rel="stylesheet" href="css/style.css">
+<link id="cssAdmin" rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html">🎄 New Year CountDown</a>
+  <nav>
+    <a class="link" href="#" id="gitID">GitHub</a>
+    <a class="link" href="timer.html">Таймер</a>
+    <a class="link" href="about.html">Об авторе</a>
+  </nav>
+</header>
+<div class="spacer"></div>
+<div class="wrap">
+  <div class="card" id="loginCard">
+    <h2>Вход</h2>
+    <form id="loginForm" class="row">
+      <input id="adminPass" type="password" placeholder="Пароль (по умолчанию: Admin123)" autocomplete="current-password">
+      <button type="submit" class="btn">Войти</button>
+    </form>
+    <div id="loginMsg" style="margin-top:6px;opacity:.85"></div>
+    <div style="margin-top:8px"><button id="openShare" class="btn">Ссылка для гостей</button></div>
+  </div>
+
+  <div class="card" id="adminCard" style="display:none">
+    <div class="tabs">
+      <button class="tab-btn" data-tab="tab-settings">Настройки</button>
+      <button class="tab-btn" data-tab="tab-anim">Анимации</button>
+      <button class="tab-btn" data-tab="tab-media">Медиа</button>
+      <button class="tab-btn" data-tab="tab-playlist">Плейлист</button>
+      <button class="tab-btn" data-tab="tab-stats">Статистика</button>
+      <button class="tab-btn" data-tab="tab-security">Безопасность</button>
+      <button id="logoutBtn" style="margin-left:auto" class="btn">Выйти</button>
+    </div>
+
+    <div id="tab-settings" class="tab"></div>
+    <div id="tab-anim" class="tab"></div>
+    <div id="tab-media" class="tab"></div>
+    <div id="tab-playlist" class="tab"></div>
+    <div id="tab-stats" class="tab"></div>
+    <div id="tab-security" class="tab"></div>
+  </div>
+</div>
+<audio id="bgm" preload="none"></audio>
+<script src="js/timer.js"></script>
+<script src="js/admin.js?t=<?=time()?"></script>
+<script src="js/ui.js?t=<?=time()?"></script>
+<script>
+(async()=>{try{
+  const s=await (await fetch('/api/settings')).json();const v=s?.version||Date.now();
+  document.getElementById('cssUi').href='css/ui.css?v='+v;
+  document.getElementById('cssStyle').href='css/style.css?v='+v;
+  document.getElementById('cssAdmin').href='css/admin.css?v='+v;
+}catch{}})();
+</script>
+<script>
+document.getElementById('openShare').onclick=async()=>{
+  try{
+    const j=await (await fetch('/api/share')).json();
+    alert('Дай гостям эти ссылки:\n\nГлавная: '+j.index+'\nТаймер: '+j.timer+'\nАдмин (только тебе): '+j.admin+'\n\nЕсли у них «только HTML», добавь ?v='+j.version+' к URL.');
+  }catch{alert('Не удалось получить ссылки')}
+};
+</script>
+</body>
+</html>

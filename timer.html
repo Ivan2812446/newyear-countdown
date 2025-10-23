@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>New Year CountDown — Таймер</title>
+<link id="cssUi" rel="stylesheet" href="css/ui.css">
+<link id="cssTimer" rel="stylesheet" href="css/timer.css">
+</head>
+<body class="timer">
+<!-- Триггерная зона для показа меню -->
+<div class="topbar-trigger"></div>
+
+<header class="topbar hidden-on-timer">
+  <a class="brand" href="index.html">🎄 New Year CountDown</a>
+  <nav>
+    <a class="link" href="#" id="gitID">GitHub</a>
+    <a class="link" href="timer.html">Таймер</a>
+    <a class="link" href="about.html">Об авторе</a>
+  </nav>
+</header>
+
+<canvas id="snow"></canvas>
+
+<main class="center glass">
+  <div id="clock" class="countdown">00:00:00</div>
+  <div id="sub" class="sub">дни · часы · минуты · секунды</div>
+</main>
+<div id="soundPrompt" class="dlg hidden">
+  <div class="card">
+    <h2>Включить новогоднюю музыку?</h2>
+    <label style="display:flex;gap:8px;align-items:center;justify-content:center;margin:8px 0">
+      <input id="shuffleYes" type="checkbox" checked> 
+      <span>Случайный порядок треков</span>
+    </label>
+    <div class="row">
+      <button id="sndYes" class="btn">Да</button>
+      <button id="sndNo" class="btn">Нет</button>
+    </div>
+  </div>
+</div>
+<audio id="player" preload="none"></audio>
+<script>
+// ЗАГРУЗКА НАСТРОЕК ДЛЯ 23:55
+(async()=>{
+  try{
+    SETTINGS = await (await fetch('/api/settings')).json();
+    const v = SETTINGS?.version || Date.now();
+    document.getElementById('cssUi').href='css/ui.css?v='+v;
+    document.getElementById('cssTimer').href='css/timer.css?v='+v;
+  } catch(e) {
+    console.error('Ошибка загрузки настроек:', e);
+  }
+})();
+</script>
+<!-- <script src="js/music-manager.js"></script> -->
+<script src="js/timer.js" defer></script>
+<script src="js/stats-ping.js" defer></script>
+<script src="js/ui.js" defer></script>
+<div id="fullscreenPrompt" class="dlg hidden">
+  <div class="card">
+    <h2>Полноэкранный режим</h2>
+    <p>Хотите включить полноэкранный режим для лучшего погружения?</p>
+    <div class="row">
+      <button id="fsYes" class="btn">Да</button>
+      <button id="fsNo" class="btn">Нет</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>

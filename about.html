@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>New Year CountDown — Об авторе</title>
+<link id="cssUi" rel="stylesheet" href="frontend/css/ui.css">
+<link id="cssStyle" rel="stylesheet" href="frontend/css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html">🎄 New Year CountDown</a>
+  <nav>
+    <a class="link" href="#" id="gitID">GitHub</a>
+    <a class="link" href="timer.html">Таймер</a>
+    <a class="link" href="about.html">Об авторе</a>
+  </nav>
+</header>
+<div class="spacer"></div>
+<canvas id="snow"></canvas>
+<div class="bg"></div>
+<main class="shell">
+  <div class="card" style="max-width:760px;width:min(760px,92%)">
+    <h2 style="margin:0 0 10px;background:linear-gradient(90deg,#9efcff,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Об авторе</h2>
+    <pre id="about" style="white-space:pre-wrap;line-height:1.55;max-height:50vh;overflow:auto;margin:12px 0 26px;opacity:.95">Загрузка…</pre>
+    <a class="btn" href="index.html">← На главную</a>
+  </div>
+</main>
+<audio id="bgm" preload="none"></audio>
+<script>
+(async()=>{try{const s=await (await fetch('/api/settings')).json();const v=s?.version||Date.now();document.getElementById('cssUi').href='css/ui.css?v='+v;document.getElementById('cssStyle').href='css/style.css?v='+v}catch{}})();
+</script>
+<script>
+(async()=>{try{const r=await fetch('/api/about');const t=await r.text();document.getElementById('about').textContent=(t||'').trim()||'—'}catch{document.getElementById('about').textContent='Ошибка'}})();
+</script>
+<script src="js/stats-ping.js"></script>
+<script src="js/about.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>

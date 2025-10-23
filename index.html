@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>New Year CountDown — Главная</title>
+<link id="cssUi" rel="stylesheet" href="/frontend/css/ui.css">
+<link id="cssStyle" rel="stylesheet" href="/frontend/css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html">🎄 New Year CountDown</a>
+  <nav>
+    <a class="link" href="#" id="gitID">GitHub</a>
+    <a class="link" href="timer.html">Таймер</a>
+    <a class="link" href="about.html">Об авторе</a>
+  </nav>
+</header>
+<div class="spacer"></div>
+<canvas id="snow"></canvas>
+<div class="bg"></div>
+<main class="shell">
+  <div class="card" style="max-width:720px;width:min(720px,92%)">
+    <h1 class="title">New Year CountDown</h1>
+    <div id="miniWrap" style="display:grid;place-items:center;margin:8px 0 2px">
+      <div id="miniClock" style="font-weight:900;font-size:44px;letter-spacing:1px"></div>
+      <div id="miniSub" style="opacity:.9;font-weight:700">дни · часы · минуты · секунды</div>
+    </div>
+    <div class="buttons" style="margin-top:16px">
+      <a class="btn xl" href="timer.html">⏱ Открыть таймер</a>
+    </div>
+  </div>
+</main>
+<audio id="bgm" preload="none"></audio>
+<script>
+(async()=>{
+  try{
+    const s=await (await fetch('/api/settings')).json();
+    const v=s?.version||Date.now();
+    document.getElementById('cssUi').href='css/ui.css?v='+v;
+    document.getElementById('cssStyle').href='css/style.css?v='+v;
+  }catch{}
+})();
+</script>
+<script src="js/main.js"></script>
+<script src="js/mini-timer.js"></script>
+<script src="js/stats-ping.js"></script>
+<script src="js/ui.js"></script>
+<script>
+if (window.location.pathname.includes('timer.html') || 
+    window.location.pathname === '/timer') {
+    document.body.classList.add('timer');
+}
+</script>
+</body>
+</html>
