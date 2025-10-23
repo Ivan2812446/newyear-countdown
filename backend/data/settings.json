@@ -1,0 +1,20 @@
+{
+  "projectName": "New Year CountDown",
+  "github": "https://github.com/Ivan2812446",
+  "targetISO": "2026-01-01T00:00:00",
+  "glassTimer": true,
+  "volume": 0.5,
+  "snow": {
+    "density": 180,
+    "fall": 1.4
+  },
+  "shuffle": true,
+  "exact2355": {
+    "enabled": true,
+    "hour": 23,
+    "minute": 55,
+    "media": "",
+    "hideTimer": false
+  },
+  "version": "1761231779909"
+}
