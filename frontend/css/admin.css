@@ -1,0 +1,17 @@
+:root{--glass:rgba(255,255,255,.12);--brd:rgba(255,255,255,.28);--shadow:0 10px 30px rgba(0,0,0,.35)}
+html,body{margin:0;height:100%;background:#070a0e;color:#fff;font-family:Inter,Segoe UI,Arial,sans-serif}
+.wrap{max-width:1080px;margin:90px auto 60px;padding:0 14px}
+.card{background:var(--glass);border:1px solid var(--brd);border-radius:18px;backdrop-filter:blur(16px);box-shadow:var(--shadow);padding:22px 26px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:6px}
+input,select,button{font-family:inherit;font-weight:600;font-size:15px;border-radius:12px;border:1px solid var(--brd);color:#fff;background:rgba(255,255,255,.08);padding:8px 12px;transition:.18s;outline:none}
+button:hover,select:hover,input:focus{background:rgba(255,255,255,.16);transform:translateY(-1px)}
+button{cursor:pointer}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--brd);padding-bottom:6px;margin-bottom:12px}
+.tab-btn{padding:8px 14px;border-radius:10px;border:1px solid var(--brd);background:rgba(255,255,255,.08);cursor:pointer;font-weight:700}
+.tab{display:none;animation:fade .2s ease}
+.tab.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+#preview{margin-top:14px;border-top:1px solid rgba(255,255,255,.12);padding-top:10px}
+#preview img,#preview video{max-width:100%;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,.35)}
+#statsBox>div{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:10px;text-align:center}
+#statsBox b{font-size:22px;color:#9efcff}

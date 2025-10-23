@@ -1,0 +1,61 @@
+:root{--glass:rgba(255,255,255,.12);--brd:rgba(255,255,255,.28)}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:Inter,Segoe UI,Calibri,Arial,sans-serif;background:#070a0e;color:#fff}
+
+.topbar{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:min(1180px,94%);z-index:10;display:flex;align-items:center;padding:10px 14px;border-radius:16px;background:var(--glass);border:1px solid var(--brd);backdrop-filter:blur(14px);box-shadow:0 10px 30px rgba(0,0,0,.35);transition:transform .3s ease,opacity .3s ease}
+.topbar .brand{ font-weight:900;color:#fff;text-decoration:none}
+.topbar nav{margin-left: 56%; display:flex;flex-wrap:wrap; gap: 10px;}
+.topbar a.link{
+    color:#fff;
+    text-decoration:none;
+    font-weight:800;
+    padding:8px 12px;
+    border:1px solid var(--brd);
+    border-radius:12px;
+    background:rgba(255,255,255,.08);
+    transition:.18s;
+}
+.topbar a.link:hover{
+    transform:translateY(-1px);
+    background:rgba(255,255,255,.18);
+}
+.spacer{height:66px}
+
+/* Скрываем меню по умолчанию */
+.timer .topbar.hidden-on-timer{
+    transform:translate(-50%,-140%);
+    opacity:0;
+    pointer-events: none;
+}
+
+/* Триггерная зона вверху экрана */
+.topbar-trigger{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height: 60px; /* Зона срабатывания */
+    z-index:9; /* Ниже чем топбар */
+    background:transparent;
+}
+
+/* Показываем меню при ховере на триггерную зону ИЛИ на само меню */
+.topbar-trigger:hover ~ .topbar.hidden-on-timer,
+.topbar.hidden-on-timer:hover{
+    transform:translate(-50%,0);
+    opacity:1;
+    pointer-events: auto;
+}
+
+/* Для мобильных устройств - всегда показываем */
+@media (hover:none), (max-width: 768px){
+    .topbar-trigger{
+        display:none;
+    }
+    .timer .topbar.hidden-on-timer{
+        transform:translate(-50%,0);
+        opacity:1;
+        pointer-events: auto;
+    }
+}
