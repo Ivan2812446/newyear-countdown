@@ -134,7 +134,7 @@ The application will be available at: `http://localhost:3000 `
 
 
 
-###👨‍💻 Developer
+### 👨‍💻 Developer
 
 **Ivan Sergeev**
 - 💼 **GitHub:** [Ivan2812446](https://github.com/Ivan2812446)
