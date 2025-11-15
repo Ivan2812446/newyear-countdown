@@ -1,6 +1,6 @@
 :root{--glass:rgba(255,255,255,.12);--brd:rgba(255,255,255,.28)}
 *{box-sizing:border-box}html,body{height:100%;margin:0}
-body{font-family:Inter,Segoe UI,Calibri,Arial,sans-serif;background:#070a0e;color:#fff;overflow:hidden}
+body{font-family:Inter,Segoe UI,Calibri,Arial,sans-serif;background:#070a0e;color:#fff;overflow:auto;}
 .bg{position:fixed;inset:0;background:#0b0f15;z-index:0}
 #snow{position:fixed;inset:0;z-index:1;pointer-events:none}
 .shell{position:relative;z-index:2;display:grid;place-items:center;height:calc(100% - 66px)}
@@ -15,3 +15,8 @@ body{font-family:Inter,Segoe UI,Calibri,Arial,sans-serif;background:#070a0e;colo
 .card{background:var(--glass);border:1px solid var(--brd);border-radius:18px;padding:20px 24px;min-width:min(420px,92%);box-shadow:0 12px 32px rgba(0,0,0,.35);text-align:center;animation:pop .18s ease}
 .row{display:flex;gap:10px;justify-content:center;margin-top:12px;flex-wrap:wrap}
 @keyframes pop{from{transform:scale(.98);opacity:.7}to{transform:scale(1);opacity:1}}
+@media (max-height: 720px) {
+    .card {
+        margin-top: 100px;
+    }
+}

@@ -13,7 +13,7 @@ html,body{
 body{
   background:#0b0f15;
   color:#fff;
-  overflow:hidden;
+  overflow: auto;
   font-family:Inter,Segoe UI,Calibri,Arial,sans-serif;
 }
 
@@ -121,4 +121,10 @@ body{
 @keyframes pop{
   from{transform:scale(.98);opacity:.7}
   to{transform:scale(1);opacity:1}
+}
+
+@media (max-height: 720px) {
+    .card {
+        margin-top: 100px;
+    }
 }
